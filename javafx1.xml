@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="javafx1" default="all">
+  
+  
+  <property file="javafx1.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_commons-net:commons-net:3.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/3.6/commons-net-3.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_fr.bmartel:http-endec:1.04.classpath">
+    <pathelement location="${path.variable.maven_repository}/fr/bmartel/http-endec/1.04/http-endec-1.04.jar"/>
+  </path>
+  
+  <path id="library.maven:_fr.bmartel:jspeedtest:1.31.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/fr/bmartel/jspeedtest/1.31.2/jspeedtest-1.31.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.11.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.11/junit-4.11.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.logging.log4j:log4j-api:2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.5/log4j-api-2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.logging.log4j:log4j-core:2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-core/2.5/log4j-core-2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module JavaFX1 -->
+  
+  <dirname property="module.javafx1.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.javafx1" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.javafx1" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.javafx1" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.javafx1" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="javafx1.output.dir" value="${module.javafx1.basedir}/target/classes"/>
+  <property name="javafx1.testoutput.dir" value="${module.javafx1.basedir}/target/test-classes"/>
+  
+  <path id="javafx1.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="javafx1.module.production.classpath">
+    <path refid="${module.jdk.classpath.javafx1}"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.5.classpath"/>
+    <path refid="library.maven:_fr.bmartel:jspeedtest:1.31.2.classpath"/>
+    <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+    <path refid="library.maven:_fr.bmartel:http-endec:1.04.classpath"/>
+  </path>
+  
+  <path id="javafx1.runtime.production.module.classpath">
+    <pathelement location="${javafx1.output.dir}"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.5.classpath"/>
+    <path refid="library.maven:_fr.bmartel:jspeedtest:1.31.2.classpath"/>
+    <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+    <path refid="library.maven:_fr.bmartel:http-endec:1.04.classpath"/>
+  </path>
+  
+  <path id="javafx1.module.classpath">
+    <path refid="${module.jdk.classpath.javafx1}"/>
+    <pathelement location="${javafx1.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.5.classpath"/>
+    <path refid="library.maven:_fr.bmartel:jspeedtest:1.31.2.classpath"/>
+    <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+    <path refid="library.maven:_fr.bmartel:http-endec:1.04.classpath"/>
+  </path>
+  
+  <path id="javafx1.runtime.module.classpath">
+    <pathelement location="${javafx1.testoutput.dir}"/>
+    <pathelement location="${javafx1.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.11.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.5.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-core:2.5.classpath"/>
+    <path refid="library.maven:_fr.bmartel:jspeedtest:1.31.2.classpath"/>
+    <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+    <path refid="library.maven:_fr.bmartel:http-endec:1.04.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.javafx1">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.javafx1">
+    <patternset refid="excluded.from.module.javafx1"/>
+  </patternset>
+  
+  <path id="javafx1.module.sourcepath">
+    <dirset dir="${module.javafx1.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="javafx1.module.test.sourcepath">
+    <dirset dir="${module.javafx1.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.javafx1" depends="compile.module.javafx1.production,compile.module.javafx1.tests" description="Compile module JavaFX1"/>
+  
+  <target name="compile.module.javafx1.production" depends="register.custom.compilers" description="Compile module JavaFX1; production classes">
+    <mkdir dir="${javafx1.output.dir}"/>
+    <javac2 destdir="${javafx1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.javafx1}/javac">
+      <compilerarg line="${compiler.args.javafx1}"/>
+      <bootclasspath refid="javafx1.module.bootclasspath"/>
+      <classpath refid="javafx1.module.production.classpath"/>
+      <src refid="javafx1.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.javafx1"/>
+    </javac2>
+    
+    <copy todir="${javafx1.output.dir}">
+      <fileset dir="${module.javafx1.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.javafx1.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.javafx1.tests" depends="register.custom.compilers,compile.module.javafx1.production" description="compile module JavaFX1; test classes" unless="skip.tests">
+    <mkdir dir="${javafx1.testoutput.dir}"/>
+    <javac2 destdir="${javafx1.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.javafx1}/javac">
+      <compilerarg line="${compiler.args.javafx1}"/>
+      <bootclasspath refid="javafx1.module.bootclasspath"/>
+      <classpath refid="javafx1.module.classpath"/>
+      <src refid="javafx1.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.javafx1"/>
+    </javac2>
+    
+    <copy todir="${javafx1.testoutput.dir}">
+      <fileset dir="${module.javafx1.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.javafx1" description="cleanup module">
+    <delete dir="${javafx1.output.dir}"/>
+    <delete dir="${javafx1.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.javafx1, clean.artifact.unnamed" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.javafx1" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.javafx1:jar" value="${basedir}/out/artifacts/JavaFX1_jar"/>
+    <property name="artifact.output.unnamed" value="${basedir}/out/artifacts/unnamed"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.JavaFX1.jar" value="${artifacts.temp.dir}/JavaFX1.jar"/>
+    <property name="artifact.temp.output." value="${artifacts.temp.dir}/"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.unnamed" description="clean unnamed artifact output">
+    <delete dir="${artifact.output.unnamed}"/>
+  </target>
+  
+  <target name="artifact.javafx1:jar" depends="init.artifacts, compile.module.javafx1" description="Build &#39;JavaFX1:jar&#39; artifact">
+    <property name="artifact.temp.output.javafx1:jar" value="${artifacts.temp.dir}/JavaFX1_jar"/>
+    <mkdir dir="${artifact.temp.output.javafx1:jar}"/>
+    <ant antfile="" target="null" dir="">
+      <property name="artifact.output.path" value="${artifact.temp.output.javafx1:jar}"/>
+    </ant>
+    <jar destfile="${temp.jar.path.JavaFX1.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${javafx1.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/fr/bmartel/http-endec/1.04/http-endec-1.04.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.5/log4j-api-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-net/commons-net/3.6/commons-net-3.6.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-core/2.5/log4j-core-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/fr/bmartel/jspeedtest/1.31.2/jspeedtest-1.31.2.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.JavaFX1.jar}" tofile="${artifact.temp.output.javafx1:jar}/JavaFX1.jar"/>
+  </target>
+  
+  <target name="artifact.unnamed" depends="init.artifacts" description="Build &#39;unnamed&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.unnamed}"/>
+    <fx:fileset id="all_but_" dir="${artifact.temp.output.}" includes="**/*.jar">
+      <exclude name=""/>
+    </fx:fileset>
+    <fx:fileset id="all_" dir="${artifact.temp.output.}" includes="**/*.jar"/>
+    <fx:application id="_id" name="unnamed" mainClass="Speedtedt.Main"/>
+    <fx:jar destfile="${artifact.temp.output.}/">
+      <fx:application refid="_id"/>
+      <fileset dir="${artifact.temp.output.}" excludes="**/*.jar"/>
+      <fx:resources>
+        <fx:fileset refid="all_but_"/>
+      </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value=""/>
+        <attribute name="Implementation-Version" value=""/>
+        <attribute name="Implementation-Vendor" value=""/>
+      </manifest>
+    </fx:jar>
+    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.}/deploy" outfile="" nativeBundles="all">
+      <fx:application refid="_id"/>
+      <fx:resources>
+        <fx:fileset refid="all_"/>
+      </fx:resources>
+    </fx:deploy>
+    <copy todir="${artifact.output.unnamed}">
+      <fileset dir="${artifact.temp.output.}/deploy"/>
+    </copy>
+    <delete includeemptydirs="true">
+      <fileset dir="${artifact.temp.output.}"/>
+    </delete>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.javafx1:jar, artifact.unnamed" description="Build all artifacts">
+    <mkdir dir="${artifact.output.javafx1:jar}"/>
+    <copy todir="${artifact.output.javafx1:jar}">
+      <fileset dir="${artifact.temp.output.javafx1:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

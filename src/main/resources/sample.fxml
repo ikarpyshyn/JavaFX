@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Speedtedt.Controller">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="546.0" prefWidth="640.0" style="-fx-background-color: #ffffff; -fx-background-image: ;" VBox.vgrow="ALWAYS">
+            <children>
+                <Label fx:id="Lable1" alignment="CENTER" layoutX="30.0" layoutY="124.0" prefHeight="96.0" prefWidth="580.0" style="&#10;" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font size="23.0" />
+                    </font>
+                </Label>
+                <ProgressBar fx:id="Progressbar" layoutX="220.0" layoutY="220.0" prefWidth="200.0" progress="0.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></ProgressBar>
+                <Label fx:id="Lable2" alignment="CENTER" layoutX="30.0" layoutY="238.0" prefHeight="46.0" prefWidth="580.0" style="&#10;" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Button fx:id="BtnSprawdźpolaczenie" layoutX="30.0" layoutY="317.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="160.0" text="Sprawdź polaczenie" />
+                <Button fx:id="BtnZobaczjakpolepszyćswojepołączenie" alignment="CENTER" contentDisplay="CENTER" layoutX="450.0" layoutY="317.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="160.0" text="Zobacz jak polepszyć swoje połączenie" textAlignment="CENTER" wrapText="true" />
+                <Label fx:id="Lale3" layoutX="19.0" layoutY="378.0" prefHeight="4.0" prefWidth="580.0" style="&#10;" textAlignment="CENTER" wrapText="true" />
+            <ImageView fitHeight="158.0" fitWidth="474.0" layoutX="127.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="Без імені111.gif" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
